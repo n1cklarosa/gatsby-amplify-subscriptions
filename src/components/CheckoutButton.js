@@ -1,17 +1,18 @@
 import React from "react"
-import { API } from "aws-amplify"
+import { API, Auth } from "aws-amplify"
 import { loadStripe } from "@stripe/stripe-js"
 const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY);
 
-const CheckoutButton = () => {
+const CheckoutButton = () => { 
     const redirectToCheckout = async () => {
       const fetchSession = async () => {
         const apiName = "stripeAPI"
         const apiEndpoint = "/checkout"
         const body = {
           quantity: 1,
-          client_reference_id: "UniqueString",
+          client_reference_id: Auth.user.attributes.sub,
           priceId: "price_1HTzBbAx3RhHxtkSmkVuVTNL",
+          email:'nick@nicklarosa.net'
         }
         const session = await API.post(apiName, apiEndpoint, { body })
         return session

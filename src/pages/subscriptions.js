@@ -1,5 +1,6 @@
 import React from "react" 
 import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
+import CheckoutButton from "../components/CheckoutButton"
  
 import Layout from "../components/layout"
 import SEO from "../components/seo"  
@@ -12,6 +13,7 @@ const Subscriptions = ({ location }) => {
       <SEO title="All posts" />
        
        Here is the subscriptions page
+      <CheckoutButton />
         
        <AmplifySignOut />
     </Layout>
