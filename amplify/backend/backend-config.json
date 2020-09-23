@@ -46,14 +46,6 @@
                 },
                 {
                     "category": "function",
-                    "resourceName": "stripeHook",
-                    "attributes": [
-                        "Name",
-                        "Arn"
-                    ]
-                },
-                {
-                    "category": "function",
                     "resourceName": "stripeNewUser",
                     "attributes": [
                         "Name",
@@ -63,6 +55,14 @@
                 {
                     "category": "function",
                     "resourceName": "stripeUser",
+                    "attributes": [
+                        "Name",
+                        "Arn"
+                    ]
+                },
+                {
+                    "category": "function",
+                    "resourceName": "stripeHook",
                     "attributes": [
                         "Name",
                         "Arn"

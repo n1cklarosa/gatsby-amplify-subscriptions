@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { Link } from "gatsby"
 import { Auth } from "aws-amplify"
 import {
@@ -6,17 +6,10 @@ import {
   SiteBranding,
   TransparentButton,
 } from "../styled/global"
-import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react"
+import { withAuthenticator } from "@aws-amplify/ui-react"
 
 const AuthHeader = ({ title }) => {
-  const getCurrentUser = async () => {
-    const anonymousUser = await Auth.currentAuthenticatedUser()
-  }
-
-  useEffect(() => {
-    console.log("got here")
-    getCurrentUser()
-  }, [])
+ 
 
   function onSignOutClicked() {
     Auth.signOut();

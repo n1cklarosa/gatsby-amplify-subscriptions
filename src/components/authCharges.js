@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { Link } from "gatsby"
+// import { Link } from "gatsby"
 import { API, Auth } from "aws-amplify"
 import { withAuthenticator } from "@aws-amplify/ui-react"
 import Loader from "react-loader-spinner"

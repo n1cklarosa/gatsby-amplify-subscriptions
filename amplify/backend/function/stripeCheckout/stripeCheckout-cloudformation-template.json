@@ -69,7 +69,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-gatsbystripecheckout-dev-95658-deployment",
-					"S3Key": "amplify-builds/stripeCheckout-4f344365306b6671394a-build.zip"
+					"S3Key": "amplify-builds/stripeCheckout-444f4c474a3546514156-build.zip"
 				}
 			}
 		},

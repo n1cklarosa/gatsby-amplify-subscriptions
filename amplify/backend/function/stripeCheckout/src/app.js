@@ -38,8 +38,8 @@ app.post('/checkout', async function(req, res) {
       client_reference_id: req.body.client_reference_id,
       customer: req.body.customer,
       success_url:
-        'http://localhost/thankyou?session_id={CHECKOUT_SESSION_ID}', // The URL the customer will be directed to after the payment or subscription creation is successful.
-      cancel_url: 'http://localhost/cancel', // The URL the customer will be directed to if they decide to cancel payment and return to your website.
+        'http://localhost:8000?session_id={CHECKOUT_SESSION_ID}', // The URL the customer will be directed to after the payment or subscription creation is successful.
+      cancel_url: 'http://localhost:8000', // The URL the customer will be directed to if they decide to cancel payment and return to your website.
     })
     res.json(session)
   } catch (err) {

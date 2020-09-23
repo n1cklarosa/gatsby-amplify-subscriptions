@@ -1,7 +1,9 @@
 import React from "react"
 // import { Link, graphql } from "gatsby" 
 import Layout from "../components/layout"
+import Bio from "../components/bio"
 import SEO from "../components/seo"
+import { HomePageLeader} from "../components/styled/global"
 // import { rhythm } from "../utils/typography"
 
 const BlogIndex = ({  location }) => {
@@ -20,7 +22,8 @@ const BlogIndex = ({  location }) => {
 
   return (
     <Layout location={location} title={"Gatsby Stripe"}>
-      <SEO title="All posts" />
+      <SEO title="Professional Ondemand Audio Streaming" />
+      <HomePageLeader><Bio /></HomePageLeader> 
       {/* {posts.map((post) => {
         const title = post.frontmatter.title || post.fields.slug
         return (

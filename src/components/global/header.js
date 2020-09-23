@@ -1,17 +1,10 @@
-import React, { useEffect } from "react"
+import React  from "react"
 import { Link } from "gatsby"
-import { Auth } from "aws-amplify"
+// import { Auth } from "aws-amplify"
 import { HeaderComponent, SiteBranding } from "../styled/global"
 
 const Header = ({ title }) => {
-  const getCurrentUser = async () => {
-    const anonymousUser = await Auth.currentAuthenticatedUser()
-  }
-
-  useEffect(() => {
-    getCurrentUser()
-  }, [])
-
+ 
   return (
     <HeaderComponent>
       <SiteBranding>

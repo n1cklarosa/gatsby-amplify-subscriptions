@@ -8,13 +8,6 @@
             }
         },
         {
-            "name": "/webhook",
-            "lambdaFunction": "stripeHook",
-            "privacy": {
-                "open": true
-            }
-        },
-        {
             "name": "/newuser",
             "lambdaFunction": "stripeNewUser",
             "privacy": {
@@ -34,6 +27,13 @@
                     "/DELETE"
                 ]
             }
+        },
+        {
+            "name": "/webhook",
+            "lambdaFunction": "stripeHook",
+            "privacy": {
+                "open": true
+            }
         }
     ],
     "resourceName": "stripeAPI",
@@ -43,13 +43,13 @@
             "lambdaFunction": "stripeCheckout"
         },
         {
-            "lambdaFunction": "stripeHook"
-        },
-        {
             "lambdaFunction": "stripeNewUser"
         },
         {
             "lambdaFunction": "stripeUser"
+        },
+        {
+            "lambdaFunction": "stripeHook"
         }
     ],
     "privacy": {
@@ -62,14 +62,6 @@
         {
             "category": "function",
             "resourceName": "stripeCheckout",
-            "attributes": [
-                "Name",
-                "Arn"
-            ]
-        },
-        {
-            "category": "function",
-            "resourceName": "stripeHook",
             "attributes": [
                 "Name",
                 "Arn"
@@ -90,7 +82,15 @@
                 "Name",
                 "Arn"
             ]
+        },
+        {
+            "category": "function",
+            "resourceName": "stripeHook",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
         }
     ],
-    "uuid": "60459e1b"
+    "uuid": "d28e9280"
 }

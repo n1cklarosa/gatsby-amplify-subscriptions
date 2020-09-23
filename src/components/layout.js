@@ -1,9 +1,9 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from "react" 
 import Header from "../components/global/header"
+import Footer from "../components/global/footer"
 import AuthHeader from "../components/global/authHeader"
 
-import { rhythm } from "../utils/typography"
+import { PageLayout } from '../components/styled/global'
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 
 const Layout = ({ location, title, children }) => {
@@ -18,21 +18,13 @@ const Layout = ({ location, title, children }) => {
     header = <Header  title={title}/>
   }
   return (
-    <div
-      style={{
-        marginLeft: `auto`,
-        marginRight: `auto`,
-        maxWidth: `960px`,
-        padding: `0 ${rhythm(3 / 4)}`,
-      }}
-    >
+    <div >
+       
       {header}
-      <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.com">Gatsby</a>
-      </footer>
+      <PageLayout>{children}</PageLayout>
+      
+      <Footer />
+         
     </div>
   )
 }

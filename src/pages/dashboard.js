@@ -4,7 +4,7 @@ import { withAuthenticator } from "@aws-amplify/ui-react"
 
 import Layout from "../components/layout"
 import AuthSubscriptions from "../components/authSubscriptions"
-import AuthCharges from "../components/authCharges"
+import AuthCharges from "../components/authCharges" 
 import AuthInvoices from "../components/authInvoices"
 import { PageTitle } from "../components/styled/global"
 import SEO from "../components/seo"
@@ -12,7 +12,6 @@ import SEO from "../components/seo"
 const Dashboard = ({ location }) => {
   const locationDetails = location ? location : { pathname: "dashboard" }
   const user = Auth.user
- 
 
   const createNewUser = async () => {
     const createUser = async () => {
@@ -27,7 +26,7 @@ const Dashboard = ({ location }) => {
     }
     var stripe_user = await createUser()
 
-    const result = await Auth.updateUserAttributes(user, {
+    await Auth.updateUserAttributes(user, {
       "custom:stripe_id": stripe_user.id,
     })
   }
@@ -36,16 +35,20 @@ const Dashboard = ({ location }) => {
     if ("custom:stripe_id" in user.attributes) {
     } else {
       createNewUser()
-    } 
+    }
   })
- 
+
   return (
     <Layout location={locationDetails}>
       <SEO title="All posts" />
       <PageTitle>Dashboard</PageTitle>
-      <AuthSubscriptions /> 
-      <AuthCharges /> 
-      <AuthInvoices /> 
+      {user.attributes["custom:stripe_id"] && (
+        <> 
+          <AuthSubscriptions />
+          <AuthCharges />
+          <AuthInvoices /> 
+        </>
+      )}
     </Layout>
   )
 }

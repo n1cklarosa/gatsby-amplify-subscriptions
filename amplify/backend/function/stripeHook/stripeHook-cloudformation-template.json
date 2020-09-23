@@ -9,6 +9,14 @@
 		},
 		"env": {
 			"Type": "String"
+		},
+		"apistripeAPIApiName": {
+			"Type": "String",
+			"Default": "apistripeAPIApiName"
+		},
+		"apistripeAPIApiId": {
+			"Type": "String",
+			"Default": "apistripeAPIApiId"
 		}
 	},
 	"Conditions": {
@@ -55,6 +63,12 @@
 						},
 						"REGION": {
 							"Ref": "AWS::Region"
+						},
+						"API_STRIPEAPI_APINAME": {
+							"Ref": "apistripeAPIApiName"
+						},
+						"API_STRIPEAPI_APIID": {
+							"Ref": "apistripeAPIApiId"
 						}
 					}
 				},
@@ -69,7 +83,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-gatsbystripecheckout-dev-95658-deployment",
-					"S3Key": "amplify-builds/stripeHook-635131384d4858636659-build.zip"
+					"S3Key": "amplify-builds/stripeHook-6d6a3978687a43774370-build.zip"
 				}
 			}
 		},
@@ -150,6 +164,55 @@
 									}
 								]
 							}
+						}
+					]
+				}
+			}
+		},
+		"AmplifyResourcesPolicy": {
+			"DependsOn": [
+				"LambdaExecutionRole"
+			],
+			"Type": "AWS::IAM::Policy",
+			"Properties": {
+				"PolicyName": "amplify-lambda-execution-policy",
+				"Roles": [
+					{
+						"Ref": "LambdaExecutionRole"
+					}
+				],
+				"PolicyDocument": {
+					"Version": "2012-10-17",
+					"Statement": [
+						{
+							"Effect": "Allow",
+							"Action": [
+								"apigateway:POST",
+								"apigateway:PUT",
+								"apigateway:GET",
+								"apigateway:HEAD",
+								"apigateway:OPTIONS",
+								"apigateway:PATCH",
+								"apigateway:DELETE"
+							],
+							"Resource": [
+								{
+									"Fn::Join": [
+										"",
+										[
+											"arn:aws:apigateway:",
+											{
+												"Ref": "AWS::Region"
+											},
+											"::/restapis/",
+											{
+												"Ref": "apistripeAPIApiName"
+											},
+											"/*"
+										]
+									]
+								}
+							]
 						}
 					]
 				}
