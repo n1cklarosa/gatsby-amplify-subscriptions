@@ -33,12 +33,12 @@
 				"FunctionName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"stripeCheckout",
+						"stripeUser",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"stripeCheckout",
+									"stripeUser",
 									"-",
 									{
 										"Ref": "env"
@@ -69,7 +69,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-gatsbystripecheckout-dev-95658-deployment",
-					"S3Key": "amplify-builds/stripeCheckout-4f344365306b6671394a-build.zip"
+					"S3Key": "amplify-builds/stripeUser-796c2f4b5243595a4531-build.zip"
 				}
 			}
 		},
@@ -79,12 +79,12 @@
 				"RoleName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"gatsbystripecheckoutLambdaRolec3af4519",
+						"gatsbystripecheckoutLambdaRolef8544eb5",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"gatsbystripecheckoutLambdaRolec3af4519",
+									"gatsbystripecheckoutLambdaRolef8544eb5",
 									"-",
 									{
 										"Ref": "env"

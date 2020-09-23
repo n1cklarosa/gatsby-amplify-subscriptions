@@ -13,6 +13,27 @@
             "privacy": {
                 "open": true
             }
+        },
+        {
+            "name": "/newuser",
+            "lambdaFunction": "stripeNewUser",
+            "privacy": {
+                "open": true
+            }
+        },
+        {
+            "name": "/user",
+            "lambdaFunction": "stripeUser",
+            "privacy": {
+                "private": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ]
+            }
         }
     ],
     "resourceName": "stripeAPI",
@@ -23,10 +44,16 @@
         },
         {
             "lambdaFunction": "stripeHook"
+        },
+        {
+            "lambdaFunction": "stripeNewUser"
+        },
+        {
+            "lambdaFunction": "stripeUser"
         }
     ],
     "privacy": {
-        "auth": 0,
+        "auth": 1,
         "unauth": 0,
         "authRoleName": "amplify-gatsbystripecheckout-dev-95658-authRole",
         "unAuthRoleName": "amplify-gatsbystripecheckout-dev-95658-unauthRole"
@@ -47,7 +74,23 @@
                 "Name",
                 "Arn"
             ]
+        },
+        {
+            "category": "function",
+            "resourceName": "stripeNewUser",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "function",
+            "resourceName": "stripeUser",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
         }
     ],
-    "uuid": "44d7826c"
+    "uuid": "60459e1b"
 }

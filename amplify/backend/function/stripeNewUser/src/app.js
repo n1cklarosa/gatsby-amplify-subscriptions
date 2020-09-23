@@ -6,8 +6,10 @@ or in the "license" file accompanying this file. This file is distributed on an 
 See the License for the specific language governing permissions and limitations under the License.
 */
 
+
+
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-var express = require('express')
+var express = require('express') 
 var bodyParser = require('body-parser')
 var awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
 
@@ -23,29 +25,23 @@ app.use(function(req, res, next) {
   next()
 });
 
-app.post('/checkout', async function(req, res) {
-  console.log("Got here", req)
+
+app.post('/newuser', async function(req, res) {
+  console.log("Got here new user", req)
   try {
-    const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
-      line_items: [
-        {
-          price: req.body.priceId, // The priceId of the product being purchased, retrievable from the Stripe dashboard
-          quantity: req.body.quantity,
-        },
-      ],
-      mode: 'subscription',
-      client_reference_id: req.body.client_reference_id,
-      customer: req.body.customer,
-      success_url:
-        'http://localhost/thankyou?session_id={CHECKOUT_SESSION_ID}', // The URL the customer will be directed to after the payment or subscription creation is successful.
-      cancel_url: 'http://localhost/cancel', // The URL the customer will be directed to if they decide to cancel payment and return to your website.
+    const user = await stripe.customers.create({
+      email: req.body.email,
+      metadata: {
+        userId:req.body.userId
+      }
     })
-    res.json(session)
+    res.json(user)
   } catch (err) {
     res.json(err)
   }
 })
+
+
 
 app.listen(3000, function() {
     console.log("App started")
