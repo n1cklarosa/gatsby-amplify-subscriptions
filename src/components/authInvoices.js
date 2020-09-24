@@ -4,7 +4,9 @@ import { API, Auth } from "aws-amplify"
 import { withAuthenticator } from "@aws-amplify/ui-react"
 import Loader from "react-loader-spinner"
 import moment from "moment-timezone"
-import { SectionTitle, FlexWrapper, ListWrapper } from "./styled/global"
+import { SectionTitle } from "./styled/global"
+import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table"
+import { FiDownload } from "react-icons/fi"
 
 const AuthInvoices = () => {
   const [loading, setLoading] = useState(true)
@@ -36,20 +38,32 @@ const AuthInvoices = () => {
       {loading && (
         <Loader type="Rings" color="#00BFFF" height={60} width={60} />
       )}
-
-      <ListWrapper>
-        {invoices.map((invoice, i) => (
-          <FlexWrapper className={"mb"} key={i}>
-            <div>
+      <Table>
+        <Thead>
+          <Tr>
+            <Th>Date</Th>
+            <Th>Total</Th>
+            <Th>Download</Th>
+          </Tr>
+        </Thead>
+        <Tbody> 
+          {invoices.map((invoice, i) => (
+          <Tr  key={i}>
+            <Td>
               {moment
                 .unix(invoice.created)
                 .format("dddd, MMMM Do YYYY, h:mm:ss a")}
-            </div>
-            <div>${invoice.amount_paid / 100}</div>
-            <div><a href={invoice.invoice_pdf} rel="noreferrer" target="_blank">Download</a></div>
-          </FlexWrapper>
+            </Td>
+            <Td>${invoice.amount_paid / 100}</Td>
+            <Td>
+              <a href={invoice.invoice_pdf} rel="noreferrer" target="_blank">
+                <FiDownload />
+              </a>
+            </Td>
+          </Tr>
         ))}
-      </ListWrapper>
+        </Tbody>
+      </Table> 
     </div>
   )
 }

@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import { API, Auth } from "aws-amplify"
 import { withAuthenticator } from "@aws-amplify/ui-react"
 import moment from "moment-timezone"
-import Loader from "react-loader-spinner" 
+import Loader from "react-loader-spinner"
 import {
   SectionTitle,
   FlexWrapper,
@@ -12,6 +12,7 @@ import {
   BrandButton,
 } from "./styled/global"
 import { FiTrash2 } from "react-icons/fi"
+import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table"
 
 const AuthSubscriptions = () => {
   const [loading, setLoading] = useState(true)
@@ -37,28 +38,25 @@ const AuthSubscriptions = () => {
   }
 
   const pressDeleted = subId => {
-
     let r = window.confirm("Are you sure? this is permanent")
     if (r === true) {
       confirmDelete(subId)
-    }  
+    }
   }
 
-  const confirmDelete = async (deleteId) => {
- 
+  const confirmDelete = async deleteId => {
     setLoading(true)
     const deleteSubscription = async () => {
       const apiName = "stripeAPI"
       const apiEndpoint = `/user/${deleteId}/delete/subscriptions`
-      await API.post(apiName, apiEndpoint) 
-       
+      await API.post(apiName, apiEndpoint)
+
       loadSubscriptions()
       return subs
     }
 
     var subs = await deleteSubscription()
-    console.log("Subs", subs);
-
+    console.log("Subs", subs)
   }
 
   return (
@@ -73,33 +71,42 @@ const AuthSubscriptions = () => {
       {loading && (
         <Loader type="Rings" color="#00BFFF" height={60} width={60} />
       )}
-      <ListWrapper>
-        {subscriptions.map((subscription, i) => (
-          <FlexWrapper className={"mb"} key={i}>
-            <Item>Rate: ${subscription.plan.amount / 100}</Item>
-            <Item>Per: {subscription.plan.interval}</Item>
-            <Item>
-              Started:{" "}
-              {moment
-                .unix(subscription.current_period_start)
-                .format("dddd, MMMM Do YYYY, h:mm:ss a")}
-            </Item>
-            <Item>
-              Next Payment:{" "}
-              {moment.unix(subscription.current_period_end).fromNow(true)}
-            </Item>
-            <Item>
-              <BrandButton
-                className={"red"}
-                onClick={() => pressDeleted(subscription.id)}
-              >
-                <FiTrash2 color={"white"} />
-              </BrandButton>
-            </Item>
-          </FlexWrapper>
-        ))}
-      </ListWrapper>
-       
+      <Table>
+        <Thead>
+          <Tr>
+            <Th>Rate / Frequency</Th>
+            <Th>Current Period Start</Th>
+            <Th>Next Payment</Th>
+            <Th>Cancel</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          {subscriptions.map((subscription, i) => (
+            <Tr className={"mb"} key={i}>
+              <Td>
+                ${subscription.plan.amount / 100} per{" "}
+                {subscription.plan.interval}
+              </Td>
+              <Td>
+                {moment
+                  .unix(subscription.current_period_start)
+                  .format("dddd, MMMM Do YYYY, h:mm:ss a")}
+              </Td>
+              <Td>
+                {moment.unix(subscription.current_period_end).fromNow(true)}
+              </Td>
+              <Td>
+                <BrandButton
+                  className={"red"}
+                  onClick={() => pressDeleted(subscription.id)}
+                >
+                  <FiTrash2 color={"white"} />
+                </BrandButton>
+              </Td>
+            </Tr>
+          ))}
+        </Tbody>
+      </Table>
     </div>
   )
 }

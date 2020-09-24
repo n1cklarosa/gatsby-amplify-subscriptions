@@ -5,6 +5,7 @@ import { withAuthenticator } from "@aws-amplify/ui-react"
 import Loader from "react-loader-spinner"
 import moment from "moment-timezone"
 import { SectionTitle, FlexWrapper, ListWrapper } from "./styled/global"
+import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table"
 
 const AuthCharges = () => {
   const [loading, setLoading] = useState(true)
@@ -36,19 +37,28 @@ const AuthCharges = () => {
       {loading && (
         <Loader type="Rings" color="#00BFFF" height={60} width={60} />
       )}
-      <ListWrapper>
-        {charges.map((charge, i) => (
-          <FlexWrapper className={"mb"} key={i}>
-            <div>
-              {moment
-                .unix(charge.created)
-                .format("dddd, MMMM Do YYYY, h:mm:ss a")}
-            </div>
-            <div>${charge.amount / 100}</div>
-            <div>{charge.captured === true && "Success"}</div>
-          </FlexWrapper>
-        ))}
-      </ListWrapper>
+      <Table>
+        <Thead>
+          <Tr>
+            <Th>Date</Th>
+            <Th>Total</Th>
+            <Th>Status</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          {charges.map((charge, i) => (
+            <Tr className={"mb"} key={i}>
+              <Td>
+                {moment
+                  .unix(charge.created)
+                  .format("dddd, MMMM Do YYYY, h:mm:ss a")}
+              </Td>
+              <Td>${charge.amount / 100}</Td>
+              <Td>{charge.captured === true && "Success"}</Td>
+            </Tr>
+          ))}
+        </Tbody>
+      </Table>
     </div>
   )
 }

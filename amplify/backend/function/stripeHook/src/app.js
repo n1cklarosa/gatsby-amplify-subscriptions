@@ -22,7 +22,7 @@ var ses = new aws.SES({ region: "ap-southeast-2" })
 
 const sendEmail = async (subject, body) => {
   var emailBody = body
-
+  console.log("Sending an email now", subject, body)
   var params = {
     Destination: {
       ToAddresses: ["nick@nicklarosa.net"],
@@ -38,17 +38,23 @@ const sendEmail = async (subject, body) => {
     },
     Source: "nick@nicklarosa.net",
   }
-
-  var email = await ses
-    .sendEmail(params, function (err, data) {
-      if (err) {
-        console.log("We failed?", err)
-        context.fail({ status: false, msg: err })
-      } else {
-        return true
-      }
-    })
-    .promise()
+  console.log("About to send email")
+  try {
+    var email = await ses.sendEmail(params).promise();
+  } catch(err) {
+    console.log('There was an error')
+  }
+  // var email = await ses
+  //   .sendEmail(params, function (err, data) {
+  //     if (err) {
+  //       console.log("We failed?", err)
+  //       context.fail({ status: false, msg: err })
+  //     } else {
+  //       return true
+  //     }
+  //   })
+  //   .promise()
+    console.log("email sent", email)
 
   return true
 }
@@ -77,15 +83,16 @@ app.use(function (req, res, next) {
 
 app.post("/webhook", async function (req, res) {
   // Check Stripe signature
-  console.log("hook received", req.body)
   const sig = req.headers["stripe-signature"]
+  let sentEmail
   let event
+  console.log("hook received", req.body, req.rawBody, sig, req) 
+  
   try {
     event = stripe.webhooks.constructEvent(req.rawBody, sig, endpointSecret)
   } catch (err) {
     return res.status(400).send(`Webhook Error: ${err.message}`)
   }
-  let sentEmail
   switch (event.type) {
     case "checkout.session.completed":
       console.log(
@@ -119,6 +126,7 @@ app.post("/webhook", async function (req, res) {
 
       break
     default:
+      res.json({ received: true })
     // Unexpected event type
     // return res.status(400).end()
   }

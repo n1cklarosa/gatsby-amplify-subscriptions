@@ -42,9 +42,11 @@ export const TransparentButton = styled.button`
 
 export const PageTitle = styled.h2`
   color: ${primary};
+  margin-top:0;
 `
 export const SectionTitle = styled.h3`
   color: ${primary};
+  margin-top:0;
 `
 export const SiteFooter = styled.footer`
   padding-top: 80px;
@@ -80,8 +82,8 @@ export const Item = styled.div`
 export const BrandButton = styled.button`
   box-shadow: none;
   &.red {
-    background-color: red;
-    border: 2px solid red;
+    background-color: ${highlight};
+    border: 2px solid ${highlight};
   }
 `
 

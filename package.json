@@ -38,6 +38,8 @@
     "react-helmet": "^5.2.1",
     "react-icons": "^3.11.0",
     "react-loader-spinner": "^3.1.14",
+    "react-super-responsive-table": "^5.1.2",
+    "react-table": "^7.5.1",
     "react-typography": "^0.16.19",
     "stripe": "^8.97.0",
     "styled-components": "^5.2.0",

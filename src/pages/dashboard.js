@@ -2,11 +2,12 @@ import React, { useEffect } from "react"
 import { API, Auth } from "aws-amplify"
 import { withAuthenticator } from "@aws-amplify/ui-react"
 
-import Layout from "../components/layout"
+import AuthLayout from "../components/authLayout"
 import AuthSubscriptions from "../components/authSubscriptions"
-import AuthCharges from "../components/authCharges" 
+import AuthCharges from "../components/authCharges"
 import AuthInvoices from "../components/authInvoices"
 import { PageTitle } from "../components/styled/global"
+import { PageSection } from "../components/styled/auth"
 import SEO from "../components/seo"
 
 const Dashboard = ({ location }) => {
@@ -39,17 +40,23 @@ const Dashboard = ({ location }) => {
   })
 
   return (
-    <Layout location={locationDetails}>
+    <AuthLayout location={locationDetails}>
       <SEO title="All posts" />
       <PageTitle>Dashboard</PageTitle>
       {user.attributes["custom:stripe_id"] && (
-        <> 
-          <AuthSubscriptions />
-          <AuthCharges />
-          <AuthInvoices /> 
+        <>
+          <PageSection>
+            <AuthSubscriptions />
+          </PageSection>
+          <PageSection>
+            <AuthCharges />
+          </PageSection>
+          <PageSection>
+            <AuthInvoices />{" "}
+          </PageSection>
         </>
       )}
-    </Layout>
+    </AuthLayout>
   )
 }
 
