@@ -2,7 +2,7 @@ import React from "react"
 import { API, Auth } from "aws-amplify"
 import { loadStripe } from "@stripe/stripe-js"
 import { BuyButton } from "./styled/global"
-const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY)
+const stripePromise = loadStripe(process.env.GATSBY_STRIPE_PUBLIC_KEY)
 
 const CheckoutButton = ({ priceId, title }) => {
   const redirectToCheckout = async () => {
