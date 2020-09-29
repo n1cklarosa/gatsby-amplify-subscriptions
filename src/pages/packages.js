@@ -12,6 +12,7 @@ import SEO from "../components/seo"
 const env = process.env.ENVIRONMENT
 
 const Packages = ({ location }) => {
+  console.log("env", env)
   const locationDetails = location ? location : { pathname: "dashboard" }
 
   return (

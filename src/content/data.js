@@ -43,8 +43,7 @@ export const data = {
         categories : ["tier2"]
       },
     ],
-  },
-
+  }, 
   prod: {
     packages: [
       {
