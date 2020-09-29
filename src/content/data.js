@@ -51,18 +51,21 @@ export const data = {
         title: "Test Subscription",
         subtitle: "Here is a subtitle",
         items: ["Item number 1", "1 month of history"],
+        categories : ["tier1"]
       },
       {
         id: "price_1HTzBbAx3RhHxtkSmkVuVTNL",
         title: "Test Subscription",
         subtitle: "Here is a subtitle",
         items: ["Item number 1", "1 month of history"],
+        categories : ["tier1"]
       },
       {
         id: "price_1HTzBbAx3RhHxtkSmkVuVTNL",
         title: "Test Subscription",
         subtitle: "Here is a subtitle",
         items: ["Item number 1", "1 month of history"],
+        categories : ["tier1"]
       },
     ],
   },
