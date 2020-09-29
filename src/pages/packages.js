@@ -9,7 +9,7 @@ import PackageOption from "../components/packageOption"
 import AuthLayout from "../components/authLayout"
 import SEO from "../components/seo"
 
-const env = process.env.ENVIRONMENT
+const env = process.env.GATSBY_ENVIRONMENT
 
 const Packages = ({ location }) => {
   console.log("env", env)
