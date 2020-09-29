@@ -15,6 +15,7 @@ const Dashboard = ({ location }) => {
   const user = Auth.user
 
   const createNewUser = async () => {
+    console.log("Creating new stripe user")
     const createUser = async () => {
       const apiName = "stripeAPI"
       const apiEndpoint = "/newuser"
