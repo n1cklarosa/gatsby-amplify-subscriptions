@@ -1,14 +1,14 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `NLR Audio Services`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Nick La Rosa`,
+      summary: `A full stackd eveloper from Sydney`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
+    description: `Billing system for nicklarosa.net AUdio Services.`,
+    siteUrl: `https://hls-billing.nicklarosa.net`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `nick_la_rosa`,
     },
   },
   plugins: [

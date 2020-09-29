@@ -5,7 +5,7 @@ const primary = "#247ba0"
 // const secondary = "#70c1b3"
 // const third = "#b2dbbf"
 // const fourth = "#f3ffbd"
-const highlight = "#ff1654"
+// const highlight = "#ff1654"
 
 export const AuthHeaderComponent = styled.header`
   position: fixed;
@@ -44,7 +44,8 @@ export const PageLayout = styled.div`
 export const PageWrapper = styled.div`
   margin-left: auto;
   margin-right: auto;
-  max-width: 1320px;
+  max-width: 100%;
+  width:1320px;
   padding: 20px;
 `
 

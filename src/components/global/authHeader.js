@@ -67,7 +67,7 @@ const AuthHeader = ({ title }) => {
               boxShadow: `none`,
               color: `white`,
             }}
-            to={`/`}
+            to={`/dashboard`}
           >
             NLR Audio Services
           </Link>

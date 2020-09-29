@@ -93,6 +93,7 @@ app.post("/webhook", async function (req, res) {
   } catch (err) {
     return res.status(400).send(`Webhook Error: ${err.message}`)
   }
+  console.log("got here", event)
   switch (event.type) {
     case "checkout.session.completed":
       console.log(
@@ -126,9 +127,7 @@ app.post("/webhook", async function (req, res) {
 
       break
     default:
-      res.json({ received: true })
-    // Unexpected event type
-    // return res.status(400).end()
+      console.log("Un determined event type", event, req.body)
   }
 
   // Return a response to acknowledge receipt of the event

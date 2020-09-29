@@ -41,7 +41,7 @@ const Dashboard = ({ location }) => {
 
   return (
     <AuthLayout location={locationDetails}>
-      <SEO title="All posts" />
+      <SEO title="Your billing Dashboard" />
       <PageTitle>Dashboard</PageTitle>
       {user.attributes["custom:stripe_id"] && (
         <>

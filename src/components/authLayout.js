@@ -13,7 +13,7 @@ const AuthLayout = ({ location, title, children }) => {
 
   if (location.pathname === rootPath) {
     header = <Header title={title} />
-  } else if (location.pathname === "dashboard") {
+  } else if ((location.pathname === "dashboard")||(location.pathname === "thanks")) {
     header = <AuthHeader title={title} />
   } else {
     header = <Header title={title} />

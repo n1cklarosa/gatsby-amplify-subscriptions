@@ -4,7 +4,7 @@ import { API, Auth } from "aws-amplify"
 import { withAuthenticator } from "@aws-amplify/ui-react"
 import Loader from "react-loader-spinner"
 import moment from "moment-timezone"
-import { SectionTitle, FlexWrapper, ListWrapper } from "./styled/global"
+import { SectionTitle } from "./styled/global"
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table"
 
 const AuthCharges = () => {

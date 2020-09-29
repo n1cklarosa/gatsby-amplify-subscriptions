@@ -1,17 +1,30 @@
-import React from "react" 
+import React from "react"
  
-import Layout from "../components/layout"
-import SEO from "../components/seo"  
+import { FlexWrapper } from "../components/styled/global"
+import { PageTitle } from "../components/styled/global"
+import { withAuthenticator } from "@aws-amplify/ui-react"
 
-const Thankyou = ({   location }) => { 
+import AuthLayout from "../components/authLayout"
+import SEO from "../components/seo"
+ 
 
+const ThanYou = ({ location }) => {
+  const locationDetails = location ? location : { pathname: "thanks" }
   return (
-    <Layout location={location} >
-      <SEO title="All posts" />
-       Thanks!
-    </Layout>
+    <AuthLayout location={locationDetails} title={"Self Hosted Options"}>
+      <SEO title="Thanks!" />
+      <PageTitle>THANKS! </PageTitle>
+      <FlexWrapper>
+        <div style={{width:"100%"}}>
+          <p>Thanks for signing up!</p>
+          <p>
+            Be sure to bookmark this site to access your account history or
+            cancel at anytime.
+          </p>
+        </div>
+      </FlexWrapper>
+    </AuthLayout>
   )
 }
 
-export default Thankyou
- 
+export default withAuthenticator(ThanYou)

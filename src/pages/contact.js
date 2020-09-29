@@ -1,23 +1,19 @@
-import React, { useState } from "react"
+import React  from "react"
 import { graphql } from "gatsby"
-import Layout from "../components/layout"
-import Bio from "../components/bio"
+import Layout from "../components/layout" 
 import SEO from "../components/seo"
-import { HomePageLeader, PageWrapper } from "../components/styled/global"
+import ContactForm from "../components/contact-form"  
 // import { rhythm } from "../utils/typography"
 
-const SiteIndex = ({ data, location }) => { 
+const Contact = ({ data, location }) => { 
   const siteTitle = data.site.siteMetadata?.title || `Title`
   // const posts = data.allMarkdownRemark.nodes
 
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="Professional Ondemand Audio Streaming" />
-      <PageWrapper>
-        <HomePageLeader>
-          <Bio />
-        </HomePageLeader>
-      </PageWrapper>
+      
+      <ContactForm />
       {/* {posts.map((post) => {
         const title = post.frontmatter.title || post.fields.slug
         return (
@@ -52,12 +48,12 @@ const SiteIndex = ({ data, location }) => {
             </section>
           </article>
         )
-      })} */}
+      })} */} 
     </Layout>
   )
 }
 
-export default SiteIndex
+export default Contact
 
 export const pageQuery = graphql`
   query {
