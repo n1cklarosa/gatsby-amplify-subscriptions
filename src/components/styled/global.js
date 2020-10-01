@@ -72,6 +72,19 @@ export const Textarea = styled.textarea`
   padding: 5px 0 5px;
 `
 
+export const TypeWriterCss = styled.h2`
+  font-size: 32px;
+  text-align:left;
+  line-height:1.1em;
+  min-height:130px;
+  color:black;
+  @media screen and (min-width: 768px) {
+    font-size: 70px; 
+     min-height:310px;
+  }
+`
+
+
 export const HomePageLeader = styled.div`
   // min-height: 60vh;
 `
