@@ -1,5 +1,5 @@
 // import React from "react"
-import styled from "styled-components"
+import styled from "styled-components" 
 
 const backgroundColor = "#ECEEF6"
 const primary = "#247ba0"
@@ -8,6 +8,11 @@ const primary = "#247ba0"
 // const fourth = "#f3ffbd"
 const highlight = "#ff1654"
 
+export const DesktopLink = styled.div`
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+`
 
 export const HeaderComponent = styled.header`
   position: fixed;
@@ -21,9 +26,8 @@ export const HeaderComponent = styled.header`
 `
 
 export const SiteFooter = styled.footer`
-
-background-color: ${primary};
-  width: 100%; 
+  background-color: ${primary};
+  width: 100%;
 `
 export const HeaderCol = styled.div`
   padding: 10px 15px;
@@ -37,7 +41,6 @@ export const SiteBranding = styled.h1`
   font-size: 24px;
 `
 
-
 export const PageLayout = styled.div`
   width: 100%;
   background-color: ${backgroundColor};
@@ -48,10 +51,9 @@ export const PageWrapper = styled.div`
   margin-left: auto;
   margin-right: auto;
   max-width: 100%;
-  width:1320px;
+  width: 1320px;
   padding: 20px 20px 80px;
 `
-
 
 export const FormGroup = styled.div`
   margin-bottom: 30px;
@@ -74,16 +76,15 @@ export const Textarea = styled.textarea`
 
 export const TypeWriterCss = styled.h2`
   font-size: 32px;
-  text-align:left;
-  line-height:1.1em;
-  min-height:130px;
-  color:black;
+  text-align: left;
+  line-height: 1.1em;
+  min-height: 130px;
+  color: black;
   @media screen and (min-width: 768px) {
-    font-size: 70px; 
-     min-height:310px;
+    font-size: 70px;
+    min-height: 310px;
   }
 `
-
 
 export const HomePageLeader = styled.div`
   // min-height: 60vh;
@@ -185,7 +186,7 @@ export const OptionContent = styled.div`
 
 export const Option = styled.div`
   box-sizing: border-box;
-  flex-grow:1;
+  flex-grow: 1;
   display: flex;
   padding: 0.5em;
   width: 100%;
@@ -215,16 +216,14 @@ export const BuyButton = styled.button`
   border: 2px solid ${primary};
 `
 
-
 export const FormWrapper = styled.div`
-  width:100%;
-  padding:15px;
-  border-radius:15px;
-  background-color:white;
-  form{
-    max-width:100%;
-    width:600px;
-    margin:40px auto;
+  width: 100%;
+  padding: 15px;
+  border-radius: 15px;
+  background-color: white;
+  form {
+    max-width: 100%;
+    width: 600px;
+    margin: 40px auto;
   }
- 
 `

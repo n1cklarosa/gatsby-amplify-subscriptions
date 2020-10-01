@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import { Auth } from "aws-amplify"
 import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
-import { TransparentButton } from "../styled/global"
+import { TransparentButton, DesktopLink } from "../styled/global"
 import { AuthHeaderComponent, HeaderCol, SiteBranding } from "../styled/auth"
 import { withAuthenticator } from "@aws-amplify/ui-react"
 
@@ -33,7 +33,7 @@ const AuthHeader = ({ title }) => {
       }
     }
   `)
-    console.log(user)
+  console.log(user)
   // Set these values by editing "siteMetadata" in gatsby-config.js
   const author = data.site.siteMetadata?.author
   // const social = data.site.siteMetadata?.social
@@ -76,12 +76,25 @@ const AuthHeader = ({ title }) => {
       </HeaderCol>
 
       <HeaderCol>
-        <p style={{color:"white", marginBottom:0, marginRight:"20px"}}> {user && user.attributes.email}</p>
+        {" "}
+        <DesktopLink>
+          <p style={{ color: "white", marginBottom: 0, marginRight: "20px" }}>
+            <Link
+              style={{
+                boxShadow: `none`,
+                color: `white`,
+              }}
+              to={`/dashboard`}
+            >
+              {user && user.attributes.email}
+            </Link>
+          </p>
+        </DesktopLink>
         <TransparentButton
           onClick={() => onSignOutClicked()}
           aria-label={"sign out"}
         >
-          <FiLogOut style={{color:'white'}} />
+          <FiLogOut style={{ color: "white" }} />
         </TransparentButton>
       </HeaderCol>
     </AuthHeaderComponent>
