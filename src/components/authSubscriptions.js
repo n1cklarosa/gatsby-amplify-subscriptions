@@ -17,14 +17,14 @@ import { FiTrash2 } from "react-icons/fi"
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table"
 
 const env = process.env.GATSBY_ENVIRONMENT
-const AuthSubscriptions = () => {
+const AuthSubscriptions = ({user}) => {
   const [loading, setLoading] = useState(true)
 
   const [subscriptions, setSubscriptions] = useState([])
 
   useEffect(() => {
     loadSubscriptions()
-  }, [])
+  }, [user])
 
   const loadSubscriptions = async () => {
     const returnSubscriptions = async () => {

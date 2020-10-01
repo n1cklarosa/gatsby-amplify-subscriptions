@@ -10,6 +10,7 @@ import { withAuthenticator } from "@aws-amplify/ui-react"
 import { FiLogOut } from "react-icons/fi"
 
 const AuthHeader = ({ title }) => {
+  const user = Auth.user
   const data = useStaticQuery(graphql`
     query LogoQuery {
       avatar: file(absolutePath: { regex: "/cloud.png/" }) {
@@ -32,7 +33,7 @@ const AuthHeader = ({ title }) => {
       }
     }
   `)
-
+    console.log(user)
   // Set these values by editing "siteMetadata" in gatsby-config.js
   const author = data.site.siteMetadata?.author
   // const social = data.site.siteMetadata?.social
@@ -75,6 +76,7 @@ const AuthHeader = ({ title }) => {
       </HeaderCol>
 
       <HeaderCol>
+        <p style={{color:"white", marginBottom:0, marginRight:"20px"}}> {user && user.attributes.email}</p>
         <TransparentButton
           onClick={() => onSignOutClicked()}
           aria-label={"sign out"}

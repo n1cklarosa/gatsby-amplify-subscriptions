@@ -1,7 +1,6 @@
-import React, { useState } from "react"
+import React  from "react"
 import { graphql } from "gatsby"
-import Layout from "../components/layout"
-import Bio from "../components/bio"
+import Layout from "../components/layout" 
 import SEO from "../components/seo"
 import Typewriter from "typewriter-effect"
 import {

@@ -8,13 +8,13 @@ import { SectionTitle } from "./styled/global"
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table"
 import { FiDownload } from "react-icons/fi"
 
-const AuthInvoices = () => {
+const AuthInvoices = ({user}) => {
   const [loading, setLoading] = useState(true)
   const [invoices, setInvoices] = useState([])
 
   useEffect(() => {
     loadInvoices()
-  }, [])
+  }, [user])
 
   const loadInvoices = async () => {
     const returnInvoices = async () => {

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { API, Auth } from "aws-amplify"
 import { withAuthenticator } from "@aws-amplify/ui-react"
 
@@ -12,10 +12,11 @@ import SEO from "../components/seo"
 
 const Dashboard = ({ location }) => {
   const locationDetails = location ? location : { pathname: "dashboard" }
-  const user = Auth.user
+  const [user, setUser] = useState(Auth.user)
+ 
 
   const createNewUser = async () => {
-    console.log("Creating new stripe user")
+     
     const createUser = async () => {
       const apiName = "stripeAPI"
       const apiEndpoint = "/newuser"
@@ -23,14 +24,22 @@ const Dashboard = ({ location }) => {
         email: Auth.user.attributes.email,
         userId: Auth.user.attributes.sub,
       }
-      const user = await API.post(apiName, apiEndpoint, { body })
-      return user
+      const stripeUser = await API.post(apiName, apiEndpoint, { body })
+      return stripeUser
     }
     var stripe_user = await createUser()
 
     await Auth.updateUserAttributes(user, {
       "custom:stripe_id": stripe_user.id,
-    })
+    });
+    
+    await Auth.currentAuthenticatedUser({
+      bypassCache: true  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
+    }).then(updatedUser => {
+       setUser(updatedUser)();
+      console.log(`Load additional settings for user: ${user.username}`);
+      // TBD
+    }).catch(err => console.log("there was an error updating user details",err));
   }
 
   useEffect(() => {
@@ -47,13 +56,13 @@ const Dashboard = ({ location }) => {
       {user.attributes["custom:stripe_id"] && (
         <>
           <PageSection>
-            <AuthSubscriptions />
+            {user && user.attributes['custom:stripe_id'] ? <AuthSubscriptions user={user} /> : null}
           </PageSection>
           <PageSection>
-            <AuthCharges />
+            {user && user.attributes['custom:stripe_id'] ? <AuthCharges user={user} /> : null}
           </PageSection>
           <PageSection>
-            <AuthInvoices />{" "}
+            {user && user.attributes['custom:stripe_id'] ? <AuthInvoices user={user} /> : null}{" "}
           </PageSection>
         </>
       )}
