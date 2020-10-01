@@ -37,7 +37,7 @@ const Dashboard = ({ location }) => {
       bypassCache: true  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
     }).then(updatedUser => {
        setUser(updatedUser)();
-      console.log(`Load additional settings for user: ${user.username}`);
+      // console.log(`Load additional settings for user: ${user.username}`);
       // TBD
     }).catch(err => console.log("there was an error updating user details",err));
   }

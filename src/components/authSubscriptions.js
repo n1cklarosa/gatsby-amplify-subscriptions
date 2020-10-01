@@ -32,7 +32,7 @@ const AuthSubscriptions = ({user}) => {
       const apiEndpoint = `/user/${Auth.user.attributes["custom:stripe_id"]}/subscriptions`
       const subs = await API.get(apiName, apiEndpoint)
       setSubscriptions(subs.subscriptions.data)
-      console.log("subs",subs.subscriptions.data)
+      // console.log("subs",subs.subscriptions.data)
       setLoading(false)
       return subs
     }

@@ -68,6 +68,8 @@ yarn-error.log
 # Yarn Integrity file
 .yarn-integrity
 
+exmaple_commands.md
+
 #amplify
 amplify/\#current-cloud-backend
 amplify/.config/local-*

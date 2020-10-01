@@ -27,7 +27,7 @@ const AuthInvoices = ({user}) => {
     }
 
     var subs = await returnInvoices()
-    console.log("Chrges", subs)
+    // console.log("Chrges", subs)
   }
   return (
     <div>

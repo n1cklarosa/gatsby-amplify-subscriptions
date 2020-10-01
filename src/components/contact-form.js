@@ -6,7 +6,7 @@ import {
   Textarea,
   FormGroup,
   PageWrapper,
-  PageLayout,
+  // PageLayout,
   FormWrapper,
 } from "../components/styled/global"
 

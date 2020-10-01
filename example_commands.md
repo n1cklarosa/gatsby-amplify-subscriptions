@@ -1,0 +1,1 @@
+aws cognito-idp admin-update-user-attributes --user-pool-id ap-southeast-2_jtNKYGZfC --username nick@pictura.com.au  --user-attributes Name="custom:stripe_id",Value=""

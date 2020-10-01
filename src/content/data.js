@@ -119,7 +119,7 @@ export const data = {
   prod: {
     packages: [
       {
-        id: "price_1HXGyMAx3RhHxtkSLnbTB0no",
+        id: "price_1HXIYTAx3RhHxtkSDvGd2UWx",
         title: "HLS Database Admin",
         subtitle: "Access and download your station history, anytime, anywhere",
         items: [
